@@ -1,0 +1,12 @@
+Starting the project git committer :
+
+Usages :
+    1. Create ".type" files as many as it need
+    2. Create a big command line in every file
+    3. Open git and add and push them to repository
+    4. Commit to different times and branches
+
+Map begin
+    $ create a file creator which generates a random name and
+      puts a default text init.
+
