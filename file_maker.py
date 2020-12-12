@@ -4,7 +4,14 @@ import string
 
 # A function to generate a random string with a specific length
 def get_string(length):
-    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(length))
+    builder = ''
+    while length > 0:
+        remain = min(80, length)
+        builder += ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(remain))
+        if remain == 80:
+            builder += "\n"
+        length -= 80
+    return builder
 
 
 # File name
