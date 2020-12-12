@@ -20,6 +20,9 @@ file_name = get_string(name_length)
 # Content of the file
 content_length = 128
 content = get_string(content_length)
+# Setting the directory name
+directory = 'Documents/'
+file_name = directory + file_name
 
 # Save into the created file
 with open(file_name, 'w') as file:
