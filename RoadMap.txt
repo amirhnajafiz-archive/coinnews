@@ -9,4 +9,5 @@ Usages :
 Map begin
     $ create a file creator which generates a random name and
       puts a default text init.
+    $ create a method that generates multi files with that content init.
 
