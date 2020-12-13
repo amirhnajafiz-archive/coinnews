@@ -14,16 +14,18 @@ def get_string(length):
     return builder
 
 
-# File name
-name_length = 10
-file_name = get_string(name_length)
-# Content of the file
-content_length = 128
-content = get_string(content_length)
-# Setting the directory name
-directory = 'Documents/'
-file_name = directory + file_name
+# This functions creates a new file with its name and content and saves it
+def generate_file():
+    # File name
+    name_length = 10
+    file_name = get_string(name_length)
+    # Content of the file
+    content_length = 128
+    content = get_string(content_length)
+    # Setting the directory name
+    directory = 'Documents/'
+    file_name = directory + file_name
 
-# Save into the created file
-with open(file_name, 'w') as file:
-    file.write(content)
+    # Save into the created file
+    with open(file_name, 'w') as file:
+        file.write(content)
