@@ -12,7 +12,7 @@ def initialize():
 
 def make_files(total_number, time_setter):
     for i in range(total_number):
-        generate_file("./Documents"+time_setter.get_dir_string())
+        generate_file("./Documents/"+time_setter.get_dir_string()+"/")
     print(f"{time_setter.get_time_string()}\nNew file added")
 
 
