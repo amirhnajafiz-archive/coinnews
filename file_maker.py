@@ -15,7 +15,7 @@ def get_string(length):
 
 
 # This functions creates a new file with its name and content and saves it
-def generate_file():
+def generate_file(path):
     # File name
     name_length = 10
     file_name = get_string(name_length)
@@ -23,8 +23,7 @@ def generate_file():
     content_length = 128
     content = get_string(content_length)
     # Setting the directory name
-    directory = 'Documents/'
-    file_name = directory + file_name
+    file_name = path + file_name
 
     # Save into the created file
     with open(file_name, 'w') as file:
