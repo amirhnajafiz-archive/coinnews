@@ -1,13 +1,30 @@
-from dir_check import dir_init
+from dir_check import dir_init, in_doc_search
 from file_maker import generate_file
+from part_time import Set
 
 
-def initialize(total_number):
+# This method checks the directories status for existence
+# Returns a new Set instance
+def initialize():
     dir_init()
+    temp = Set()
+    in_doc_search(temp.get_dir_string())
+    return temp
+
+
+# This method creates the files for user
+def make_files(total_number, time_setter):
     for i in range(total_number):
-        generate_file()
-        print("New file added")
+        generate_file("./Documents/"+time_setter.get_dir_string()+"/")
+    print(f"{time_setter.get_time_string()}\nNew file added")
 
 
-number = input(">> ")
-initialize(int(number))
+# Script execute method
+def execute():
+    number = input(">> ")
+    setter = initialize()
+    make_files(int(number), setter)
+
+
+if __name__ == "__main__":
+    execute()
