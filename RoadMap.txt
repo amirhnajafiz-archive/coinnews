@@ -11,4 +11,6 @@ Map begin
       puts a default text init.
     $ create a method that generates multi files with that content init.
     $ use the time libraries to create directories and save the files in them
+    $ create a feature that allows the user to set the number of files in each type
+      and create a file with specific format that contains the comment of that type
 
