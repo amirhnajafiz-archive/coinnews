@@ -13,18 +13,19 @@ def initialize():
 
 
 # This method creates the files for user
-def make_files(total_number, time_setter):
+def make_files(total_number, time_setter, file_type):
     for i in range(total_number):
         file_path = "./Documents/"+time_setter.get_dir_string()+"/"
-        generate_file(file_path, "javascript")
+        generate_file(file_path, file_type)
     print(f"{time_setter.get_time_string()}\nNew file added")
 
 
 # Script execute method
 def execute():
-    number = input(">> ")
+    number = input("Number >> ")
+    file_format = input("Type >> ")
     setter = initialize()
-    make_files(int(number), setter)
+    make_files(int(number), setter, file_format)
 
 
 if __name__ == "__main__":
