@@ -15,7 +15,8 @@ def initialize():
 # This method creates the files for user
 def make_files(total_number, time_setter):
     for i in range(total_number):
-        generate_file("./Documents/"+time_setter.get_dir_string()+"/")
+        file_path = "./Documents/"+time_setter.get_dir_string()+"/"
+        generate_file(file_path, "javascript")
     print(f"{time_setter.get_time_string()}\nNew file added")
 
 
