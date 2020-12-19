@@ -28,14 +28,22 @@ def present_view():
     return option_view
 
 
+def input_line_break(string_line, option_view):
+    numbers = [int(num) for num in string_line.split(" ")]
+    files_list = [option_view.get_file(num) for num in numbers]
+    return files_list
+
+
 # Script execute method
 def execute():
     number = input("Number >> ")
     option_viewer = present_view()
     option_viewer.view_list()
     file_format = input("Enter the numbers >> ")
+    format_list = input_line_break(file_format, option_viewer)
     setter = initialize()
-    make_files(int(number), setter, file_format)
+    for type_file in format_list:
+        make_files(int(number), setter, type_file)
 
 
 if __name__ == "__main__":

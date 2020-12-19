@@ -4,10 +4,8 @@ class Option:
 
     def initialize(self):
         try:
-            index = 1
             with open("tools.txt", "r") as file:
-                self.files = [f"{index}.{line.strip()}" for line in file.readlines()]
-                index += 1
+                self.files = [line.strip() for line in file.readlines()]
         except FileNotFoundError as error:
             print(error)
 
