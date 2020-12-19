@@ -21,13 +21,19 @@ def make_files(total_number, time_setter, file_type):
     print(f"{time_setter.get_time_string()}\nNew file added")
 
 
+# This method creates a view and returns it
+def present_view():
+    option_view = Option()
+    option_view.initialize()
+    return option_view
+
+
 # Script execute method
 def execute():
     number = input("Number >> ")
-    option_view = Option()
-    option_view.initialize()
-    option_view.view_list()
-    file_format = input("Type >> ")
+    option_viewer = present_view()
+    option_viewer.view_list()
+    file_format = input("Enter the numbers >> ")
     setter = initialize()
     make_files(int(number), setter, file_format)
 
