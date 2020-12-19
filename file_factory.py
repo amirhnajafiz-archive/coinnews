@@ -1,6 +1,7 @@
 from dir_check import dir_init, in_doc_search
 from file_maker import generate_file
 from part_time import Set
+from options import Option
 
 
 # This method checks the directories status for existence
@@ -23,6 +24,9 @@ def make_files(total_number, time_setter, file_type):
 # Script execute method
 def execute():
     number = input("Number >> ")
+    option_view = Option()
+    option_view.initialize()
+    option_view.view_list()
     file_format = input("Type >> ")
     setter = initialize()
     make_files(int(number), setter, file_format)
