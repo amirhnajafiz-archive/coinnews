@@ -18,19 +18,20 @@ def make_files(total_number, time_setter, file_type):
     for i in range(total_number):
         file_path = "./Documents/"+time_setter.get_dir_string()+"/"
         generate_file(file_path, file_type)
-    print(f"{time_setter.get_time_string()}\nNew file added")
+    print(f"{time_setter.get_time_string()}\nNew files added")
 
 
 # This method creates a view and returns it
 def present_view():
     option_view = Option()
     option_view.initialize()
+    option_view.format_init()
     return option_view
 
 
 def input_line_break(string_line, option_view):
     numbers = [int(num) for num in string_line.split(" ")]
-    files_list = [option_view.get_file(num) for num in numbers]
+    files_list = [option_view.get_file(num-1) for num in numbers]
     return files_list
 
 
