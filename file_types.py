@@ -6,14 +6,15 @@ class Formatter:
             "python": ".py",
             "javascript": ".js",
             "c++": ".cpp",
-            "c": ".c"
+            "c": ".c",
+            "go": ".go"
         }
 
     @staticmethod
     def get_start_comment(input_type="nil"):  # A method for getting the starting comment order
         if input_type == "python":
             return "\"\"\""
-        elif input_type == "javascript" or input_type == "c++" or input_type == "c":
+        elif input_type == "javascript" or input_type == "c++" or input_type == "c" or input_type == "go":
             return "/*"
         else:
             return " "
@@ -22,7 +23,7 @@ class Formatter:
     def get_end_comment(input_type="nil"):  # A method for getting the finishing comment order
         if input_type == "python":
             return "\"\"\""
-        elif input_type == "javascript" or input_type == "c++" or input_type == "c":
+        elif input_type == "javascript" or input_type == "c++" or input_type == "c" or input_type == "go":
             return "*/"
         else:
             return " "

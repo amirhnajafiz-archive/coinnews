@@ -29,8 +29,9 @@ def present_view():
     return option_view
 
 
+# In this method we split the use command line input to takeout the indexes
 def input_line_break(string_line, option_view):
-    numbers = [int(num) for num in string_line.split(" ")]
+    numbers = [int(num.strip()) for num in string_line.split(" ")]
     files_list = [option_view.get_file(num-1) for num in numbers]
     return files_list
 
@@ -38,11 +39,15 @@ def input_line_break(string_line, option_view):
 # Script execute method
 def execute():
     number = input("Number >> ")
+    # Creating viewer
     option_viewer = present_view()
     option_viewer.view_list()
+    # Input command line
     file_format = input("Enter the numbers >> ")
     format_list = input_line_break(file_format, option_viewer)
+    # Program setter
     setter = initialize()
+    # File creating
     for type_file in format_list:
         make_files(int(number), setter, type_file)
 
