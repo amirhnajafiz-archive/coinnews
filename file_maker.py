@@ -16,8 +16,7 @@ def get_string(length):
 
 
 # This functions creates a new file with its name and content and saves it
-def generate_file(path, file_type="nil"):
-    type_formatter = Formatter()
+def generate_file(path, type_formatter, file_type="nil"):
     # File name
     name_length = 10
     file_name = get_string(name_length)

@@ -1,0 +1,5 @@
+python : .py : """ : """
+javascript : .js : /* : */
+C : .c : /* : */
+C++ : .cpp : /* : */
+GO : .go : /* : */

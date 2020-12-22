@@ -4,13 +4,6 @@ class Option:
         self.files = []
         self.format_files = []
 
-    def initialize(self):
-        try:
-            with open("tools.txt", "r") as file:
-                self.files = [line.strip() for line in file.readlines()]
-        except FileNotFoundError as error:
-            print(error)
-
     def format_init(self):
         index = 1
         for file in self.files:
