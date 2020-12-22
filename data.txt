@@ -2,4 +2,6 @@ python : .py : """ : """
 javascript : .js : /* : */
 C : .c : /* : */
 C++ : .cpp : /* : */
+C# : .cs : /* : */
+PHP : .php : <?php /* : */ ?>
 GO : .go : /* : */

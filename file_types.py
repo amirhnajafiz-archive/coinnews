@@ -13,7 +13,7 @@ class Formatter:
 
     def get_end_comment(self, input_type="nil"):  # A method for getting the finishing comment order
         if input_type in self.type_list.keys():
-            return self.type_list.get(input_type)[1]
+            return self.type_list.get(input_type)[2]
         else:
             return " "
 
