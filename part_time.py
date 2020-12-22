@@ -1,3 +1,4 @@
+# This file sets the starting and finishing time of the program and creates directory names based on the date
 import datetime
 
 
