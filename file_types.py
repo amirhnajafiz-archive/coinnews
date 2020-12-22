@@ -23,10 +23,10 @@ class Formatter:
         else:
             return ".txt"
 
-    def get_files_list(self):
+    def get_files_list(self):  # To get the list of the files that we support
         return list(self.type_list.keys())
 
-    def files_initialize(self):
+    def files_initialize(self):  # Reading the files of the script from data file
         with open("data.txt", "r") as file:
             lines = file.readlines()
             for line in lines:

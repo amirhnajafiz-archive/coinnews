@@ -1,3 +1,4 @@
+# In this file we only have the methods for checking the existence of the directories.
 import os
 
 
