@@ -9,7 +9,7 @@ def dir_init(path="./Documents"):
 
 
 # This function checks the directory existence inside the documents
-def in_doc_search(path="Empty"):
+def dir_search(path="Empty"):
     if path == "Empty":
         return False
     else:
