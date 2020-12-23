@@ -1,7 +1,6 @@
 # This file is the part where we create the files with their contents.
 import random
 import string
-from file_types import Formatter
 
 
 # A function to generate a random string with a specific length
@@ -22,7 +21,7 @@ def generate_file(path, type_formatter, file_type="nil"):
     name_length = 10
     file_name = get_string(name_length)
     # Content of the file
-    content_length = 128
+    content_length = 1024
     content = get_string(content_length)
     content = type_formatter.get_start_comment(file_type) + "\n" + content + "\n" + type_formatter.get_end_comment(
         file_type)

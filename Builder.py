@@ -1,9 +1,9 @@
 # This file is the base of our script which creates the files, manages the directories, all classes and ....
-from dir_check import dir_init, in_doc_search
-from file_maker import generate_file
+from Directory import dir_init, dir_search
+from FileMaker import generate_file
 from file_types import Formatter
-from part_time import Set
-from options import Option
+from Timer import Set
+from Viewer import Option
 
 
 # This method checks the directories status for existence.
@@ -11,7 +11,7 @@ from options import Option
 def initialize():
     dir_init()
     temp = Set()
-    in_doc_search(temp.get_dir_string())
+    dir_search(temp.get_dir_string())
     return temp
 
 
