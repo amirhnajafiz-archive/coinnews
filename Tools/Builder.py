@@ -53,7 +53,3 @@ def execute():
     # File creating
     for type_file in format_list:
         make_files(int(number), setter, type_formatter, type_file)
-
-
-if __name__ == "__main__":
-    execute()

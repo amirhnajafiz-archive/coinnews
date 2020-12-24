@@ -2,12 +2,14 @@
 import os
 
 
+# This function corrects the path to documents
 def correct_path():
     current_pace = os.getcwd()
     path_dir = os.path.dirname(current_pace)
     os.chdir(path_dir)
 
 
+# This functions resets the path from documents
 def reset_path():
     os.chdir("./Tools")
 
