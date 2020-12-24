@@ -1,4 +1,7 @@
 # Formatter class manages the file types and their comments types
+from Tools.Directory import correct_path, reset_path
+
+
 class Formatter:
     def __init__(self):
         # List of the file types we support
@@ -27,6 +30,7 @@ class Formatter:
         return list(self.type_list.keys())
 
     def files_initialize(self):  # Reading the files of the script from data file
+        correct_path()  # set the data file
         with open("data.txt", "r") as file:
             lines = file.readlines()
             for line in lines:
@@ -35,3 +39,4 @@ class Formatter:
                 self.type_list[parts[0].strip()].append(parts[1].strip())
                 self.type_list[parts[0].strip()].append(parts[2].strip())
                 self.type_list[parts[0].strip()].append(parts[3].strip())
+        reset_path()  # reset path to origin

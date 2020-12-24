@@ -1,7 +1,6 @@
 # This file is the part where we create the files with their contents.
 import random
 import string
-from Tools.Directory import correct_path, reset_path
 
 
 # A function to generate a random string with a specific length
@@ -18,7 +17,6 @@ def get_string(length):
 
 # This functions creates a new file with its name and content and saves it
 def generate_file(path, type_formatter, file_type="nil"):
-    correct_path()  # set the path
     # File name
     name_length = 10
     file_name = get_string(name_length)
@@ -32,4 +30,3 @@ def generate_file(path, type_formatter, file_type="nil"):
     # Save into the created file
     with open(file_name, 'w') as file:
         file.write(content)
-    reset_path()  # convert to normal path
