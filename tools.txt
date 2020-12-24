@@ -1,5 +1,0 @@
-python
-javascript
-c++
-c
-go
