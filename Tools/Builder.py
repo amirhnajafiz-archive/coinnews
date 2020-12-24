@@ -1,9 +1,9 @@
 # This file is the base of our script which creates the files, manages the directories, all classes and ....
-from Directory import dir_init, dir_search
-from FileMaker import generate_file
-from file_types import Formatter
-from Timer import Set
-from Viewer import Option
+from Tools.Directory import dir_init, dir_search
+from Tools.FileMaker import generate_file
+from Tools.TypeManage import Formatter
+from Tools.Timer import Set
+from Tools.Viewer import Option
 
 
 # This method checks the directories status for existence.
@@ -41,7 +41,7 @@ def input_line_break(string_line, option_view):
 # Script execute method.
 def execute():
     number = input("Number >> ")
-    type_formatter = Formatter()  # See file_types.py
+    type_formatter = Formatter()  # See TypeManage.py
     # Creating viewer
     option_viewer = present_view(type_formatter)
     option_viewer.view_list()
