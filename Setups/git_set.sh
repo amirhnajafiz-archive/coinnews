@@ -30,7 +30,7 @@ git pull --allow-unrelated-histories "$repourl"
 # Add a new branch
 git checkout -b "$branchname"
 
-echo $(date) + " Repo created successfully." > config
+echo $repourl + "\n" + $branchname > config
 
 # Adding files to new branch
 git add .
