@@ -1,3 +1,4 @@
+# This file is the configure where it sends the data to repository we created
 import subprocess
 import shlex
 import os
