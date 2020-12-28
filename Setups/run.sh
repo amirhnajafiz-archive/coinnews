@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 # Checking in the branch user wants
+echo $1 + $2 + $3 + $4 + $5
 git checkout $1
 
 # Performing a commit to the date of the user
