@@ -9,6 +9,8 @@ def program_setups_check():
         url = input("Please enter the git url >> ")
         branch = input("Please enter the name of the branch >> ")
         setup_git(url, branch)
+    else:
+        print("<< Everything is OK, welcome to the committer >>")
 
 
 # This function will get the commit date from user
@@ -16,7 +18,16 @@ def get_date_from_user():
     return input("Please enter your date (or type nil for today date) >> ")
 
 
+# This function asks the user before push the changes into the repository
+def push_message():
+    cmd = input("Do you want to push to repository right now ? ( y / N )  >> ")
+    if cmd == "y":
+        push_to_repo(commit_date=get_date_from_user())
+    else:
+        print("Your files are saved in \'Documents\'")
+
+
 if __name__ == "__main__":
     program_setups_check()
     execute()
-    push_to_repo(commit_date=get_date_from_user())
+    push_message()
