@@ -1,11 +1,8 @@
 #!/usr/bin/bash
 
-# Setting up the git repository
-echo "Enter your repository url : "
-read -e repourl
-
-echo "Enter your branch name : "
-read -e branchname
+# Getting the repo url and the branch name
+repourl="$1"
+branchname="$2"
 
 # Initialize
 git init
@@ -30,7 +27,9 @@ git pull --allow-unrelated-histories "$repourl"
 # Add a new branch
 git checkout -b "$branchname"
 
-echo $repourl + "\n" + $branchname > config
+# Create a config file
+echo "$repourl" > config
+echo "$branchname" >> config
 
 # Adding files to new branch
 git add .
