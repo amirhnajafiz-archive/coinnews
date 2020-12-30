@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# Data will be send with a date and a branch name to the repository we have
+
 # Checking in the branch user wants
 git checkout "$5"
 

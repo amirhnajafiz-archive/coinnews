@@ -10,24 +10,23 @@ from Tools.Directory import reset_path
 def push_to_repo(commit_date="nil"):
     if commit_date == "nil":  # getting the data if nothing entered
         commit_date = datetime.datetime.now().strftime("%b %d %Y")
-
     path = "./Setups/config"
     if os.path.exists(path):
-        os.chdir("./Setups")
+        os.chdir("./Setups")  # set location into setups
         with open("config", 'r') as file:
             repo_url = file.read()
             branch = file.read()
-        subprocess.call(shlex.split(f'./run.sh {branch} {commit_date} {repo_url}'))
-        reset_path()
+        subprocess.call(shlex.split(f'./GitPush.sh {branch} {commit_date} {repo_url}'))
+        reset_path()  # reset the location
 
 
 # This function will setup a git repository in users system
 def setup_git(url, branch):
     os.chdir("./Setups")
-    subprocess.call(shlex.split(f'./git_set.sh {url} {branch}'))
+    subprocess.call(shlex.split(f'./GitSet.sh {url} {branch}'))
     reset_path()
 
 
-# This function checks the configuration exists
+# This function checks the configuration existence
 def is_config():
     return os.path.exists("./Setups/config")
