@@ -27,7 +27,8 @@ def push_message():
         print("Your files are saved in \'Documents\'")
 
 
+# Program starts
 if __name__ == "__main__":
-    program_setups_check()
-    execute()
-    push_message()
+    program_setups_check()  # git checkup
+    execute()  # Script execute
+    push_message()  # Upload on git

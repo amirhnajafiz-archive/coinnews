@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# In this file, all the operations for creating a git repository will be executed
+
 # Getting the repo url and the branch name
 repourl="$1"
 branchname="$2"
@@ -14,6 +16,7 @@ echo "git_set.sh" > .gitignore
 # Add a remote
 git remote add origin "$repourl"
 
+# Add files
 git add .
 git commit -m "Startup"
 
