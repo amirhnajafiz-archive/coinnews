@@ -3,16 +3,21 @@ import os
 
 
 def get_line_break():
-    string = ""
-    for i in range(os.get_terminal_size().columns):
+    string = "\n"
+    for i in range(50):
         string += "#"
-    return string
+    return string + "\n"
 
 
 def input_massage():
-    string = "> Enter your commands like : $ <command>"
-    string += "\n" + "  -- new  => for executing the committer builder."
-    string += "\n" + "  -- quit => for exiting the program"
+    string = "> Enter your commands like :"
+    string += "\n" + "  new  => for executing the committer builder."
+    string += "\n" + "  quit => for exiting the program"
+    return string
+
+
+def exit_massage():
+    return "< ! Committer terminated >"
 
 
 def init():
@@ -23,7 +28,7 @@ def init():
 
 def start_console():
     init()
-    input_massage()
+    print(input_massage())
     while True:
         order = input("$ ")
         order = order.strip()
@@ -36,3 +41,7 @@ def start_console():
             print("> Not valid.")
         print(get_line_break())
 
+
+if __name__ == "__main__":
+    start_console()
+    print(get_line_break() + "\n" + exit_massage())
