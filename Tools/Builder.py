@@ -20,7 +20,7 @@ def make_files(total_number, time_setter, formatter, file_type):
     for i in range(total_number):
         file_path = "./Documents/"+time_setter.get_dir_string()+"/"
         generate_file(file_path, formatter, file_type)
-    print(f"{time_setter.get_time_string()}\nNew files added")
+    print(f"> {time_setter.get_time_string()}\n>> New files added.")
 
 
 # This method creates a view and returns it.
@@ -40,13 +40,13 @@ def input_line_break(string_line, option_view):
 
 # Script execute method.
 def execute():
-    number = input("Number >> ")
+    number = input("> (How many files) $ ")
     type_formatter = Formatter()  # See TypeManage.py
     # Creating viewer
     option_viewer = present_view(type_formatter)
     option_viewer.view_list()
     # Input command line
-    file_format = input("Enter the numbers >> ")
+    file_format = input("> (Programming language index/indexes) $ ")
     format_list = input_line_break(file_format, option_viewer)
     # Program setter
     setter = initialize()
