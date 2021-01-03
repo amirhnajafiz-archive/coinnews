@@ -25,3 +25,8 @@ def cache_in():
         lines = file.readlines()
         new_lines = [line for line in lines if line.startswith("&")]
     return new_lines
+
+
+def cache_clear():
+    with open(local_path, "w") as file:
+        file.writelines([f'$Cache Created : {datetime.datetime.now()}'])
