@@ -20,7 +20,7 @@ def make_files(total_number, time_setter, formatter, file_type):
     for i in range(total_number):
         file_path = "./Documents/"+time_setter.get_dir_string()+"/"
         generate_file(file_path, formatter, file_type)
-    print(f"> {time_setter.get_time_string()}\n>> New files added.")
+    print(f"> {time_setter.get_time_string()} New files added.")
 
 
 # This method creates a view and returns it.
