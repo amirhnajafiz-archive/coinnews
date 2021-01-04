@@ -4,11 +4,14 @@ from Tools.FileMaker import generate_file
 from Tools.TypeManage import Formatter
 from Tools.Timer import Set
 from Tools.Viewer import Option
+from Cache.DataBox import Box
+from Cache.Cacher import cache_init, cache_up
 
 
 # This method checks the directories status for existence.
 # Returns a new Set instance.
 def initialize():
+    cache_init()
     dir_init()
     temp = Set()
     dir_search(temp.get_dir_string())
@@ -40,16 +43,20 @@ def input_line_break(string_line, option_view):
 
 # Script execute method.
 def execute():
+    data_box = Box
     number = input("> (How many files) $ ")
+    data_box.file_number = number
     type_formatter = Formatter()  # See TypeManage.py
     # Creating viewer
     option_viewer = present_view(type_formatter)
     option_viewer.view_list()
     # Input command line
     file_format = input("> (Programming language index/indexes) $ ")
+    data_box.files_list = file_format
     format_list = input_line_break(file_format, option_viewer)
     # Program setter
     setter = initialize()
     # File creating
     for type_file in format_list:
         make_files(int(number), setter, type_formatter, type_file)
+    cache_up(data_box)
