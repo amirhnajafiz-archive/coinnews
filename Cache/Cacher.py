@@ -2,7 +2,7 @@ import os
 import datetime
 
 
-local_path = "/Cache/record.data"
+local_path = "record.data"
 
 
 def cache_init():
@@ -12,12 +12,13 @@ def cache_init():
 
 
 def cache_up(box):
+    from Cache import DataBox
     with open(local_path, "r") as file:
         lines = file.readlines()
     with open(local_path, "w") as file:
-        new_lines = [line for line in lines if line != "&"+box.get_string()]
+        new_lines = [line for line in lines if line != "&" + box.get_string]
         file.writelines(new_lines)
-        file.write(f'\n&{box.get_string()}')
+        file.write(f'\n&{box.get_string}')
 
 
 def cache_in():

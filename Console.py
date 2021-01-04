@@ -1,6 +1,5 @@
 # This file is our console base script to communicate with user from terminal
 from Committer import program_setups_check, execute, push_message
-import os
 
 
 # This function creates a line break with "#"
