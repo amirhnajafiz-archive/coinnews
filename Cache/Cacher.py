@@ -11,13 +11,13 @@ def cache_init():
             file.writelines([f'$Cache Created : {datetime.datetime.now()}'])
 
 
-def cache_up(string):
+def cache_up(box):
     with open(local_path, "r") as file:
         lines = file.readlines()
     with open(local_path, "w") as file:
-        new_lines = [line for line in lines if line != "&"+string]
+        new_lines = [line for line in lines if line != "&"+box.get_string()]
         file.writelines(new_lines)
-        file.write(f'\n&{string}')
+        file.write(f'\n&{box.get_string()}')
 
 
 def cache_in():
