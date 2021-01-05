@@ -14,8 +14,9 @@ def get_line_break():
 # Starting massage for our application
 def input_massage():
     string = "> Enter your commands like :"
-    string += "\n" + "  new  => for executing the committer builder."
-    string += "\n" + "  quit => for exiting the program"
+    string += "\n" + "   new  => for executing the committer builder."
+    string += "\n" + "   quit => for exiting the program."
+    string += "\n" + "  cache => for seeing the history of committer builds."
     return string
 
 
@@ -31,7 +32,8 @@ def cache_output():
     if cache_list:
         for item in cache_list.keys():
             print(f'> {item}. Number of files {cache_list[item][0]}, files indexes {cache_list[item][1]}')
-    print(get_line_break())
+    else:
+        print("> Cache is empty.")
 
 
 # Initializing function of console
@@ -54,6 +56,8 @@ def start_console():
         elif order == "new":
             execute()
             push_message()
+        elif order == "cache":
+            cache_output()
         else:
             print("> Not valid.")
         print(get_line_break())
