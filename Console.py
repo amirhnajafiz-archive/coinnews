@@ -26,6 +26,7 @@ def exit_massage():
     return "< ! Committer terminated >"
 
 
+# This method gets the cache data from "Cacher" and prints it into the console
 def cache_output():
     print(get_line_break())
     print("Program cache view :")
@@ -37,10 +38,12 @@ def cache_output():
         print("> Cache is empty.")
 
 
+# This method will call the "cache clear" method to empty the cache.
 def empty_cache():
     cache_clear()
     print(get_line_break())
     print("> Cache is now empty.")
+
 
 # Initializing function of console
 def init():
