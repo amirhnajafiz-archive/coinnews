@@ -1,6 +1,6 @@
 # This file is our console base script to communicate with user from terminal
 from Committer import program_setups_check, execute, push_message
-from Cache.Cacher import cache_init
+from Cache.Cacher import cache_init, cache_in
 
 
 # This function creates a line break with "#"
@@ -22,6 +22,16 @@ def input_massage():
 # Ending massage in our application
 def exit_massage():
     return "< ! Committer terminated >"
+
+
+def cache_output():
+    print(get_line_break())
+    print("Program cache view :")
+    cache_list = cache_in()
+    if cache_list:
+        for item in cache_list.keys():
+            print(f'> {item}. Number of files {cache_list[item][0]}, files indexes {cache_list[item][1]}')
+    print(get_line_break())
 
 
 # Initializing function of console
