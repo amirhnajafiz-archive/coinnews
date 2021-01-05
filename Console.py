@@ -1,6 +1,6 @@
 # This file is our console base script to communicate with user from terminal
 from Committer import program_setups_check, execute, push_message
-from Cache.Cacher import cache_init, cache_in
+from Cache.Cacher import cache_init, cache_in, cache_clear
 
 
 # This function creates a line break with "#"
@@ -17,6 +17,7 @@ def input_massage():
     string += "\n" + "   new  => for executing the committer builder."
     string += "\n" + "   quit => for exiting the program."
     string += "\n" + "  cache => for seeing the history of committer builds."
+    string += "\n" + "  clear => for deleting the cache history."
     return string
 
 
@@ -35,6 +36,11 @@ def cache_output():
     else:
         print("> Cache is empty.")
 
+
+def empty_cache():
+    cache_clear()
+    print(get_line_break())
+    print("> Cache is now empty.")
 
 # Initializing function of console
 def init():
@@ -58,6 +64,8 @@ def start_console():
             push_message()
         elif order == "cache":
             cache_output()
+        elif order == "clear":
+            empty_cache()
         else:
             print("> Not valid.")
         print(get_line_break())
