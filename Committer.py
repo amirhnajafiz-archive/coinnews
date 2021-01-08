@@ -1,5 +1,5 @@
 # This is our program main file which will connect the application part together
-from Tools.Builder import execute
+from Tools.Builder import execute, execute_from_cache, get_types
 from Configure import push_to_repo, setup_git, is_config
 
 

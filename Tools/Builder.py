@@ -60,3 +60,21 @@ def execute():
     for type_file in format_list:
         make_files(int(number), setter, type_formatter, type_file)
     cache_up(data_box)
+
+
+# This script executes the command line in cache
+def execute_from_cache(number, files_list):
+    type_formatter = Formatter()
+    option_viewer = present_view(type_formatter)
+    format_list = input_line_break(files_list, option_viewer)
+    setter = initialize()
+    for type_file in format_list:
+        make_files(int(number), setter, type_formatter, type_file)
+
+
+# This method gets the indexes and returns the files names
+def get_types(index_list):
+    type_formatter = Formatter()
+    option_viewer = present_view(type_formatter)
+    files_list = [str(option_viewer.files[int(index)-1]) for index in index_list]
+    return files_list

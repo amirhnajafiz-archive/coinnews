@@ -1,5 +1,5 @@
 # This file is our console base script to communicate with user from terminal
-from Committer import program_setups_check, execute, push_message
+from Committer import program_setups_check, execute, push_message, execute_from_cache, get_types
 from Cache.Cacher import cache_init, cache_in, cache_clear
 
 
@@ -15,6 +15,7 @@ def get_line_break():
 def input_massage():
     string = "> Enter your commands like :"
     string += "\n" + "   new  => for executing the committer builder."
+    string += "\n" + "  rerun => for executing old commands."
     string += "\n" + "   quit => for exiting the program."
     string += "\n" + "  cache => for seeing the history of committer builds."
     string += "\n" + "  clear => for deleting the cache history."
@@ -33,7 +34,9 @@ def cache_output():
     cache_list = cache_in()
     if cache_list:
         for item in cache_list.keys():
-            print(f'> {item}. Number of files {cache_list[item][0]}, files indexes {cache_list[item][1]}')
+            files_names = get_types(cache_list[item][1])
+            print(f'> {item}. Number of files {cache_list[item][0]}, files   ', end='')
+            print(*files_names, sep="  |  ")
     else:
         print("> Cache is empty.")
 
@@ -53,25 +56,47 @@ def init():
     print(get_line_break())
 
 
+# This method allows the user to execute the old commands again
+def run_by_cache():
+    cache_output()
+    index_list = input("\n> (Enter the cache indexes) $ ")
+    chosen_list = [index for index in index_list.split(" ")]
+    cache_list = cache_in()
+    for index in chosen_list:
+        try:
+            execute_from_cache(cache_list[index][0], "".join([str(file_index) for file_index in cache_list[index][1]]))
+        except IndexError:
+            print("\n>>> Cache has a problem, we suggest you to clear cache ones. This might caused by bad request.\n")
+        except KeyError:
+            print("\n>>> Cache is empty, or the key you entered is not in cache items.\n")
+
+
 # Main method of the console script
 def start_console():
     init()
     print(input_massage())
-    while True:
-        order = input("$ ")
-        order = order.strip()
-        if order == "quit":
-            break
-        elif order == "new":
-            execute()
-            push_message()
-        elif order == "cache":
-            cache_output()
-        elif order == "clear":
-            empty_cache()
-        else:
-            print("> Not valid.")
+    try:
+        while True:
+            order = input("$ ")
+            order = order.strip()
+            if order == "quit":
+                break
+            elif order == "new":
+                execute()
+                push_message()
+            elif order == "cache":
+                cache_output()
+            elif order == "clear":
+                empty_cache()
+            elif order == "rerun":
+                run_by_cache()
+                push_message()
+            else:
+                print("> Not valid.")
+            print(get_line_break())
+    except (KeyboardInterrupt, EnvironmentError):
         print(get_line_break())
+        print("> Program terminated in a bad way !")
 
 
 # Program starts
