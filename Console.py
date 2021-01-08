@@ -1,5 +1,5 @@
 # This file is our console base script to communicate with user from terminal
-from Committer import program_setups_check, execute, push_message
+from Committer import program_setups_check, execute, push_message, execute_from_cache
 from Cache.Cacher import cache_init, cache_in, cache_clear
 
 
@@ -53,6 +53,15 @@ def init():
     print(get_line_break())
 
 
+def run_by_cache():
+    cache_output()
+    index_list = input("> (Enter the cache indexes) $ ")
+    chosen_list = [index for index in index_list]
+    cache_list = cache_in()
+    for index in chosen_list:
+        execute_from_cache(cache_list[index][0], "".join([ str(file_index) for file_index in cache_list[index][1]]))
+
+
 # Main method of the console script
 def start_console():
     init()
@@ -69,6 +78,8 @@ def start_console():
             cache_output()
         elif order == "clear":
             empty_cache()
+        elif order == "rerun":
+            run_by_cache()
         else:
             print("> Not valid.")
         print(get_line_break())
