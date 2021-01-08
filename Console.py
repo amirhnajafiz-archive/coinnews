@@ -63,7 +63,12 @@ def run_by_cache():
     chosen_list = [index for index in index_list.split(" ")]
     cache_list = cache_in()
     for index in chosen_list:
-        execute_from_cache(cache_list[index][0], "".join([str(file_index) for file_index in cache_list[index][1]]))
+        try:
+            execute_from_cache(cache_list[index][0], "".join([str(file_index) for file_index in cache_list[index][1]]))
+        except IndexError:
+            print("\n>>> Cache has a problem, we suggest you to clear cache ones. This might caused by bad request.\n")
+        except KeyError:
+            print("\n>>> Cache is empty, or the key you entered is not in cache items.\n")
 
 
 # Main method of the console script
@@ -85,6 +90,7 @@ def start_console():
                 empty_cache()
             elif order == "rerun":
                 run_by_cache()
+                push_message()
             else:
                 print("> Not valid.")
             print(get_line_break())
