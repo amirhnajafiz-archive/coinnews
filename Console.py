@@ -15,6 +15,7 @@ def get_line_break():
 def input_massage():
     string = "> Enter your commands like :"
     string += "\n" + "   new  => for executing the committer builder."
+    string += "\n" + "  rerun => for executing old commands."
     string += "\n" + "   quit => for exiting the program."
     string += "\n" + "  cache => for seeing the history of committer builds."
     string += "\n" + "  clear => for deleting the cache history."
@@ -53,36 +54,41 @@ def init():
     print(get_line_break())
 
 
+# This method allows the user to execute the old commands again
 def run_by_cache():
     cache_output()
-    index_list = input("> (Enter the cache indexes) $ ")
-    chosen_list = [index for index in index_list]
+    index_list = input("\n> (Enter the cache indexes) $ ")
+    chosen_list = [index for index in index_list.split(" ")]
     cache_list = cache_in()
     for index in chosen_list:
-        execute_from_cache(cache_list[index][0], "".join([ str(file_index) for file_index in cache_list[index][1]]))
+        execute_from_cache(cache_list[index][0], "".join([str(file_index) for file_index in cache_list[index][1]]))
 
 
 # Main method of the console script
 def start_console():
     init()
     print(input_massage())
-    while True:
-        order = input("$ ")
-        order = order.strip()
-        if order == "quit":
-            break
-        elif order == "new":
-            execute()
-            push_message()
-        elif order == "cache":
-            cache_output()
-        elif order == "clear":
-            empty_cache()
-        elif order == "rerun":
-            run_by_cache()
-        else:
-            print("> Not valid.")
+    try:
+        while True:
+            order = input("$ ")
+            order = order.strip()
+            if order == "quit":
+                break
+            elif order == "new":
+                execute()
+                push_message()
+            elif order == "cache":
+                cache_output()
+            elif order == "clear":
+                empty_cache()
+            elif order == "rerun":
+                run_by_cache()
+            else:
+                print("> Not valid.")
+            print(get_line_break())
+    except (KeyboardInterrupt, EnvironmentError):
         print(get_line_break())
+        print("> Program terminated in a bad way !")
 
 
 # Program starts
