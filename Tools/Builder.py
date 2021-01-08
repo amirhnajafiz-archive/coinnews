@@ -72,6 +72,7 @@ def execute_from_cache(number, files_list):
         make_files(int(number), setter, type_formatter, type_file)
 
 
+# This method gets the indexes and returns the files names
 def get_types(index_list):
     type_formatter = Formatter()
     option_viewer = present_view(type_formatter)
