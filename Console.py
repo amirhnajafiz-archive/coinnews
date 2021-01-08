@@ -1,5 +1,5 @@
 # This file is our console base script to communicate with user from terminal
-from Committer import program_setups_check, execute, push_message, execute_from_cache
+from Committer import program_setups_check, execute, push_message, execute_from_cache, get_types
 from Cache.Cacher import cache_init, cache_in, cache_clear
 
 
@@ -34,7 +34,9 @@ def cache_output():
     cache_list = cache_in()
     if cache_list:
         for item in cache_list.keys():
-            print(f'> {item}. Number of files {cache_list[item][0]}, files indexes {cache_list[item][1]}')
+            files_names = get_types(cache_list[item][1])
+            print(f'> {item}. Number of files {cache_list[item][0]}, files   ', end='')
+            print(*files_names, sep="  |  ")
     else:
         print("> Cache is empty.")
 
