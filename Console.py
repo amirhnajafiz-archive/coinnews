@@ -67,7 +67,8 @@ def run_by_cache():
     cache_list = cache_in()
     for index in chosen_list:
         try:
-            execute_from_cache(cache_list[index][0], "".join([str(file_index) for file_index in cache_list[index][1]]))
+            file_index_string_line = " ".join(map(str, cache_list[index][1]))
+            execute_from_cache(cache_list[index][0], file_index_string_line)
         except IndexError:
             print("\n>>> Cache has a problem, we suggest you to clear cache ones. This might caused by bad request.\n")
         except KeyError:
