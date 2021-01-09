@@ -19,6 +19,7 @@ def input_massage():
     string += "\n" + "   quit => for exiting the program."
     string += "\n" + "  cache => for seeing the history of committer builds."
     string += "\n" + "  clear => for deleting the cache history."
+    string += "\n" + "   help => to see this guid again."
     return string
 
 
@@ -80,6 +81,7 @@ def run_by_cache():
 def start_console():
     init()
     print(input_massage())
+    print(get_line_break())
     try:
         while True:
             order = input("$ ")
@@ -95,15 +97,17 @@ def start_console():
                 empty_cache()
             elif order == "rerun":
                 run_by_cache()
+            elif order == "help":
+                print(input_massage())
             else:
                 print("> Not valid.")
             print(get_line_break())
     except (KeyboardInterrupt, EnvironmentError):
         print(get_line_break())
         print("> Program terminated in a bad way !")
+    print(get_line_break() + "\n" + exit_massage())
 
 
 # Program starts
 if __name__ == "__main__":
     start_console()
-    print(get_line_break() + "\n" + exit_massage())
