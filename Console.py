@@ -39,6 +39,7 @@ def cache_output():
             print(*files_names, sep="  |  ")
     else:
         print("> Cache is empty.")
+    return len(cache_list)
 
 
 # This method will call the "cache clear" method to empty the cache.
@@ -58,7 +59,9 @@ def init():
 
 # This method allows the user to execute the old commands again
 def run_by_cache():
-    cache_output()
+    out_result = cache_output()
+    if out_result == 0:
+        return
     index_list = input("\n> (Enter the cache indexes) $ ")
     chosen_list = [index for index in index_list.split(" ")]
     cache_list = cache_in()
@@ -69,6 +72,7 @@ def run_by_cache():
             print("\n>>> Cache has a problem, we suggest you to clear cache ones. This might caused by bad request.\n")
         except KeyError:
             print("\n>>> Cache is empty, or the key you entered is not in cache items.\n")
+    push_message()
 
 
 # Main method of the console script
@@ -90,7 +94,6 @@ def start_console():
                 empty_cache()
             elif order == "rerun":
                 run_by_cache()
-                push_message()
             else:
                 print("> Not valid.")
             print(get_line_break())
