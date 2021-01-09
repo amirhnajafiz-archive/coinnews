@@ -25,6 +25,7 @@ def cache_up(box):
 # This methods returns what ever is packed into cache data file
 def cache_in():
     cache_lines = {}
+    cache_init()
     with open(local_path, "r") as file:
         lines = file.readlines()
         index = 0

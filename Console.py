@@ -19,6 +19,7 @@ def input_massage():
     string += "\n" + "   quit => for exiting the program."
     string += "\n" + "  cache => for seeing the history of committer builds."
     string += "\n" + "  clear => for deleting the cache history."
+    string += "\n" + "   help => to see this guid again."
     return string
 
 
@@ -39,6 +40,7 @@ def cache_output():
             print(*files_names, sep="  |  ")
     else:
         print("> Cache is empty.")
+    return len(cache_list)
 
 
 # This method will call the "cache clear" method to empty the cache.
@@ -58,23 +60,28 @@ def init():
 
 # This method allows the user to execute the old commands again
 def run_by_cache():
-    cache_output()
+    out_result = cache_output()
+    if out_result == 0:
+        return
     index_list = input("\n> (Enter the cache indexes) $ ")
     chosen_list = [index for index in index_list.split(" ")]
     cache_list = cache_in()
     for index in chosen_list:
         try:
-            execute_from_cache(cache_list[index][0], "".join([str(file_index) for file_index in cache_list[index][1]]))
+            file_index_string_line = " ".join(map(str, cache_list[index][1]))
+            execute_from_cache(cache_list[index][0], file_index_string_line)
         except IndexError:
             print("\n>>> Cache has a problem, we suggest you to clear cache ones. This might caused by bad request.\n")
         except KeyError:
             print("\n>>> Cache is empty, or the key you entered is not in cache items.\n")
+    push_message()
 
 
 # Main method of the console script
 def start_console():
     init()
     print(input_massage())
+    print(get_line_break())
     try:
         while True:
             order = input("$ ")
@@ -90,16 +97,17 @@ def start_console():
                 empty_cache()
             elif order == "rerun":
                 run_by_cache()
-                push_message()
+            elif order == "help":
+                print(input_massage())
             else:
                 print("> Not valid.")
             print(get_line_break())
     except (KeyboardInterrupt, EnvironmentError):
         print(get_line_break())
         print("> Program terminated in a bad way !")
+    print(get_line_break() + "\n" + exit_massage())
 
 
 # Program starts
 if __name__ == "__main__":
     start_console()
-    print(get_line_break() + "\n" + exit_massage())
