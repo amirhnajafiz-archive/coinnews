@@ -1,6 +1,7 @@
 # This file is our console base script to communicate with user from terminal
 from Committer import program_setups_check, execute, push_message, execute_from_cache, get_types
 from Cache.Cacher import cache_init, cache_in, cache_clear
+from rich.console import Console
 
 
 # This function creates a line break with "#"
@@ -79,8 +80,9 @@ def run_by_cache():
 
 # Main method of the console script
 def start_console():
+    console = Console(width=120)
     init()
-    print(input_massage())
+    console.print(f'[bold yellow]{input_massage()}')
     print(get_line_break())
     try:
         while True:
@@ -98,14 +100,15 @@ def start_console():
             elif order == "rerun":
                 run_by_cache()
             elif order == "help":
-                print(input_massage())
+                console.print(f'[bold yellow]{input_massage()}')
             else:
                 print("> Not valid.")
             print(get_line_break())
     except (KeyboardInterrupt, EnvironmentError):
         print(get_line_break())
-        print("> Program terminated in a bad way !")
-    print(get_line_break() + "\n" + exit_massage())
+        console.print("> Program terminated in a bad way !", style="bold red")
+    print(get_line_break())
+    console.print("\n" + exit_massage(), style="bold green")
 
 
 # Program starts
