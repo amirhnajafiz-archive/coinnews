@@ -6,12 +6,12 @@ Basically you can use this app to create fake commits on your github profile at 
 ## Project set up
 You can clone this repository and run the <b><i>GitSet.sh</i></b> file to begin the application setup.
 ```shell
-chmod +x ./GitSet.sh
+chmod +x ./Setups/GitSet.sh
 ```
 
 And then run the bash file:
 ```shell
-./GitSet.sh
+./Setups/GitSet.sh
 ```
 
 After that you need to give the application a link to your repository at github.<br />
