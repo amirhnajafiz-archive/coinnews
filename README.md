@@ -1,6 +1,7 @@
 # GitCommitter
 
 Commiter is an application that allows you to create as many as files as you want and commit them in your git repasitory.<br />
+Basically you can use this app to create fake commits on your github profile at any date that you want.
 
 ## Project set up
 You can clone this repository and run the <b><i>GitSet.sh</i></b> file to begin the application setup.
