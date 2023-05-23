@@ -1,4 +1,4 @@
-module github.com/amirhnajafiz/data-generator
+module data-generator
 
 go 1.20
 
