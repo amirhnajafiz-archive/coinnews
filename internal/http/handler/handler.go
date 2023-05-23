@@ -5,6 +5,7 @@ import (
 )
 
 type Handler struct {
+	crypto map[string]int
 }
 
 func (h *Handler) GetData(ctx *fiber.Ctx) error {
