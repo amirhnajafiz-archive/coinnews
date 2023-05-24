@@ -25,11 +25,27 @@ func New(values ...string) *Cache {
 	}
 }
 
-// Get an item by it's name.
+// Get an item by its name.
 func (c *Cache) Get(name string) (int, error) {
 	if value, ok := c.crypto[name]; ok {
 		return value, nil
 	}
 
 	return 0, errNotFound
+}
+
+// GetAllNames returns the map keys.
+func (c *Cache) GetAllNames() []string {
+	keys := make([]string, 0)
+
+	for key := range c.crypto {
+		keys = append(keys, key)
+	}
+
+	return keys
+}
+
+// Update item by setting a new value.
+func (c *Cache) Update(name string, value int) {
+	c.crypto[name] = value
 }
