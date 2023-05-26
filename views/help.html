@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            Cryptography
+        </title>
+    </head>
+    <body>
+        <div>
+            <h1>
+                Cryptography Data API Documents
+            </h1>
+            <div>
+                You can get data from the two following endpoints.
+                <ul>
+                    <li>
+                        <h4>
+                            /api/data
+                        </h4>
+                        <p>
+                            Returns a list of available categories.
+                        </p>
+                        <pre>
+["bitcoin", "examplecoin"]
+                        </pre>
+                    </li>
+                    <li>
+                        <h4>
+                            /api/data/{name}
+                        </h4>
+                        <p>
+                            Returns price of a specific crypto.
+                        </p>
+                        <pre>
+{ "name": "bitcoin", "value": "500" }
+                        </pre>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
