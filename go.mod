@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
+	github.com/fatih/structs v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/gofiber/fiber/v2 v2.46.0 // indirect
@@ -14,6 +15,7 @@ require (
 	github.com/knadh/koanf/maps v0.1.1 // indirect
 	github.com/knadh/koanf/parsers/yaml v0.1.0 // indirect
 	github.com/knadh/koanf/providers/file v0.1.0 // indirect
+	github.com/knadh/koanf/providers/structs v0.1.0 // indirect
 	github.com/knadh/koanf/v2 v2.0.1 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect
