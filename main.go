@@ -10,6 +10,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/html"
 )
 
 func main() {
@@ -39,9 +40,17 @@ func main() {
 		Cache: c,
 	}
 
-	// create a new fiber app
-	app := fiber.New()
+	// initialize standard Go html template engine
+	engine := html.New("./views", ".html")
 
+	// create a new fiber app
+	app := fiber.New(fiber.Config{
+		Views: engine,
+	})
+
+	app.Get("/", func(ctx *fiber.Ctx) error {
+		return ctx.Render("help", nil)
+	})
 	app.Get("/api/data/:name", h.GetData)
 	app.Get("/api/data", h.GetAvailable)
 
