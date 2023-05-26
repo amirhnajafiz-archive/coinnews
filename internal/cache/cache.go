@@ -14,11 +14,11 @@ type Cache struct {
 }
 
 // New returns a new cache module.
-func New(values ...*model.Unit) *Cache {
+func New(values ...model.Unit) *Cache {
 	list := make(map[string]*model.Unit)
 
 	for _, item := range values {
-		list[item.Name] = item
+		list[item.Name] = &item
 	}
 
 	return &Cache{

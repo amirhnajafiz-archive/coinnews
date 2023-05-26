@@ -1,6 +1,7 @@
 package worker
 
 import (
+	"log"
 	"math/rand"
 	"time"
 
@@ -12,7 +13,9 @@ type Worker struct {
 	Interval int
 }
 
-func (w *Worker) Do() {
+func (w Worker) Do() {
+	log.Println("worker started")
+
 	names := w.Cache.GetAllNames()
 
 	for {
@@ -24,7 +27,7 @@ func (w *Worker) Do() {
 	}
 }
 
-func (w *Worker) process(name string) {
+func (w Worker) process(name string) {
 	item, _ := w.Cache.Get(name)
 	value := item.Value
 
