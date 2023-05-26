@@ -12,6 +12,7 @@ import (
 
 type Config struct {
 	HTTPPort       int          `koanf:"http_port"`
+	WorkerEnable   bool         `koanf:"worker_enable"`
 	WorkerInterval int          `koanf:"worker_interval"`
 	Units          []model.Unit `koanf:"units"`
 }

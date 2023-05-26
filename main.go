@@ -27,10 +27,12 @@ func main() {
 	c := cache.New(cfg.Units...)
 
 	// init worker
-	go worker.Worker{
-		Cache:    c,
-		Interval: cfg.WorkerInterval,
-	}.Do()
+	if cfg.WorkerEnable {
+		go worker.Worker{
+			Cache:    c,
+			Interval: cfg.WorkerInterval,
+		}.Do()
+	}
 
 	// create handler
 	h := handler.Handler{
