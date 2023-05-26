@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  data-app:
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    container_name: data-app-container
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: ./config/config.production.yml
+        target: src/app/config.yml

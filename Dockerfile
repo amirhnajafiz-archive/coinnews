@@ -8,10 +8,6 @@ RUN go mod download
 
 COPY . .
 
-RUN rm Dockerfile \
-    && rm haproxy.cfg \
-    && README.md
-
 RUN go build -o main
 
 CMD ./main --config config.yml
