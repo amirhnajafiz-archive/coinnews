@@ -11,6 +11,10 @@ type Handler struct {
 	Cache *cache.Cache
 }
 
+func (h *Handler) GetAvailable(ctx *fiber.Ctx) error {
+	return ctx.Status(fiber.StatusOK).JSON(h.Cache.GetAllNames())
+}
+
 func (h *Handler) GetData(ctx *fiber.Ctx) error {
 	name := ctx.Params("name", "bitcoin")
 
