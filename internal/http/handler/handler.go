@@ -15,7 +15,7 @@ func (h *Handler) GetData(ctx *fiber.Ctx) error {
 
 	if value, ok := h.crypto[name]; ok {
 		return ctx.Status(fiber.StatusOK).JSON(response.CryptoResponse{
-			Type:  "",
+			Type:  "USD",
 			Name:  name,
 			Value: value,
 		})
