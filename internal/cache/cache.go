@@ -1,6 +1,7 @@
 package cache
 
 import (
+	"data-generator/internal/model"
 	"errors"
 )
 
@@ -9,15 +10,15 @@ var (
 )
 
 type Cache struct {
-	crypto map[string]int
+	crypto map[string]*model.Unit
 }
 
 // New returns a new cache module.
-func New(values ...string) *Cache {
-	list := make(map[string]int)
+func New(values ...*model.Unit) *Cache {
+	list := make(map[string]*model.Unit)
 
 	for _, item := range values {
-		list[item] = 0
+		list[item.Name] = item
 	}
 
 	return &Cache{
@@ -26,12 +27,12 @@ func New(values ...string) *Cache {
 }
 
 // Get an item by its name.
-func (c *Cache) Get(name string) (int, error) {
+func (c *Cache) Get(name string) (*model.Unit, error) {
 	if value, ok := c.crypto[name]; ok {
 		return value, nil
 	}
 
-	return 0, errNotFound
+	return nil, errNotFound
 }
 
 // GetAllNames returns the map keys.
@@ -47,5 +48,5 @@ func (c *Cache) GetAllNames() []string {
 
 // Update item by setting a new value.
 func (c *Cache) Update(name string, value int) {
-	c.crypto[name] = value
+	c.crypto[name].Value = value
 }

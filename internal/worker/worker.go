@@ -25,7 +25,8 @@ func (w *Worker) Do() {
 }
 
 func (w *Worker) process(name string) {
-	value, _ := w.Cache.Get(name)
+	item, _ := w.Cache.Get(name)
+	value := item.Value
 
 	delta := rand.Int() % 5
 	if delta == 0 || delta == 3 {
@@ -34,5 +35,5 @@ func (w *Worker) process(name string) {
 		value += 1
 	}
 
-	w.Cache.Update(name, delta)
+	w.Cache.Update(name, value)
 }
