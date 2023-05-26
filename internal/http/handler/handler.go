@@ -16,7 +16,6 @@ func (h *Handler) GetData(ctx *fiber.Ctx) error {
 
 	if value, err := h.Cache.Get(name); err == nil {
 		return ctx.Status(fiber.StatusOK).JSON(response.CryptoResponse{
-			Type:  value.Type,
 			Name:  value.Name,
 			Value: value.Value,
 		})
