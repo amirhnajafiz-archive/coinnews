@@ -10,15 +10,15 @@ var (
 )
 
 type Cache struct {
-	crypto map[string]*model.Unit
+	crypto map[string]int
 }
 
 // New returns a new cache module.
 func New(values ...model.Unit) *Cache {
-	list := make(map[string]*model.Unit)
+	list := make(map[string]int)
 
 	for _, item := range values {
-		list[item.Name] = &item
+		list[item.Name] = item.Value
 	}
 
 	return &Cache{
@@ -27,12 +27,12 @@ func New(values ...model.Unit) *Cache {
 }
 
 // Get an item by its name.
-func (c *Cache) Get(name string) (*model.Unit, error) {
+func (c *Cache) Get(name string) (int, error) {
 	if value, ok := c.crypto[name]; ok {
 		return value, nil
 	}
 
-	return nil, errNotFound
+	return 0, errNotFound
 }
 
 // GetAllNames returns the map keys.
@@ -48,5 +48,5 @@ func (c *Cache) GetAllNames() []string {
 
 // Update item by setting a new value.
 func (c *Cache) Update(name string, value int) {
-	c.crypto[name].Value = value
+	c.crypto[name] = value
 }

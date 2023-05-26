@@ -4,7 +4,6 @@ import (
 	"data-generator/internal/cache"
 	"data-generator/internal/config"
 	"data-generator/internal/http/handler"
-	"data-generator/internal/worker"
 	"flag"
 	"fmt"
 	"log"
@@ -27,10 +26,10 @@ func main() {
 	c := cache.New(cfg.Units...)
 
 	// init worker
-	go worker.Worker{
-		Cache:    c,
-		Interval: cfg.WorkerInterval,
-	}.Do()
+	//go worker.Worker{
+	//	Cache:    c,
+	//	Interval: cfg.WorkerInterval,
+	//}.Do()
 
 	// create handler
 	h := handler.Handler{
