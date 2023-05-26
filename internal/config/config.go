@@ -1,6 +1,7 @@
 package config
 
 import (
+	"data-generator/internal/model"
 	"log"
 
 	"github.com/knadh/koanf/parsers/yaml"
@@ -10,6 +11,8 @@ import (
 )
 
 type Config struct {
+	HTTPPort int          `koanf:"http_port"`
+	Units    []model.Unit `koanf:"units"`
 }
 
 func Load(path string) Config {
