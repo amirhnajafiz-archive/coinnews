@@ -28,7 +28,8 @@ func main() {
 
 	// init worker
 	go worker.Worker{
-		Cache: c,
+		Cache:    c,
+		Interval: cfg.WorkerInterval,
 	}.Do()
 
 	// create handler

@@ -11,8 +11,9 @@ import (
 )
 
 type Config struct {
-	HTTPPort int          `koanf:"http_port"`
-	Units    []model.Unit `koanf:"units"`
+	HTTPPort       int          `koanf:"http_port"`
+	WorkerInterval int          `koanf:"worker_interval"`
+	Units          []model.Unit `koanf:"units"`
 }
 
 func Load(path string) Config {

@@ -23,7 +23,7 @@ func (w Worker) Do() {
 			w.process(name)
 		}
 
-		time.Sleep(time.Duration(w.Interval) * time.Millisecond)
+		time.Sleep(time.Duration(w.Interval) * time.Second)
 	}
 }
 

@@ -6,7 +6,8 @@ import (
 
 func Default() Config {
 	return Config{
-		HTTPPort: 8000,
-		Units:    make([]model.Unit, 0),
+		HTTPPort:       8000,
+		WorkerInterval: 2, // seconds
+		Units:          make([]model.Unit, 0),
 	}
 }
