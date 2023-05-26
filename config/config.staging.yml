@@ -1,0 +1,5 @@
+http_port: 5000
+worker_enable: false
+units:
+  - name: bitcoin
+    value: 500
