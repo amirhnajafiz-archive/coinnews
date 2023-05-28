@@ -3,7 +3,7 @@ services:
   data-app:
     build:
       context: "."
-      dockerfile: Dockerfile
+      dockerfile: ./build/Dockerfile
     container_name: data-app-container
     ports:
       - "8000:8000"
