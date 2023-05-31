@@ -1,10 +1,8 @@
 package model
 
-import (
-	"time"
-)
+import "time"
 
 type History struct {
-	Value int64
-	Date  time.Time
+	Value int64     `json:"value"`
+	Date  time.Time `json:"date"`
 }

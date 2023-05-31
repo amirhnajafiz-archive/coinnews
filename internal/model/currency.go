@@ -3,9 +3,9 @@ package model
 import "time"
 
 type Currency struct {
-	Changes     []History
-	MarketValue int64
-	Value       int64
-	ROC         float64
-	UpdatedAt   time.Time
+	Changes     []History `json:"changes"`
+	MarketValue int64     `json:"market_value"`
+	Value       int64     `json:"value"`
+	ROC         float64   `json:"roc"`
+	UpdatedAt   time.Time `json:"updated_at"`
 }
