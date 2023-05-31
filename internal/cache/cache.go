@@ -3,6 +3,7 @@ package cache
 import (
 	"data-generator/internal/model"
 	"errors"
+	"time"
 )
 
 var (
@@ -10,15 +11,20 @@ var (
 )
 
 type Cache struct {
-	crypto map[string]int
+	crypto map[string]*model.Currency
 }
 
 // New returns a new cache module.
 func New(values ...model.Unit) *Cache {
-	list := make(map[string]int)
+	list := make(map[string]*model.Currency)
 
 	for _, item := range values {
-		list[item.Name] = item.Value
+		list[item.Name] = &model.Currency{
+			Value:       int64(item.Value),
+			MarketValue: int64(item.Value),
+			ROC:         0,
+			UpdatedAt:   time.Now(),
+		}
 	}
 
 	return &Cache{
@@ -27,9 +33,9 @@ func New(values ...model.Unit) *Cache {
 }
 
 // Get an item by its name.
-func (c *Cache) Get(name string) (int, error) {
+func (c *Cache) Get(name string) (int64, error) {
 	if value, ok := c.crypto[name]; ok {
-		return value, nil
+		return value.Value, nil
 	}
 
 	return 0, errNotFound
@@ -47,6 +53,14 @@ func (c *Cache) GetAllNames() []string {
 }
 
 // Update item by setting a new value.
-func (c *Cache) Update(name string, value int) {
-	c.crypto[name] = value
+func (c *Cache) Update(name string, value int64) {
+	item := c.crypto[name]
+
+	item.Changes = append(item.Changes, model.History{
+		Value: item.Value,
+		Date:  item.UpdatedAt,
+	})
+	item.ROC = float64((value-item.Value)/item.Value) * 100
+	item.UpdatedAt = time.Now()
+	item.Value = value
 }
