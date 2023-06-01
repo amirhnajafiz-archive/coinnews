@@ -21,10 +21,13 @@ func (h *Handler) GetData(ctx *fiber.Ctx) error {
 
 	log.Printf("request for: %s\n", name)
 
-	if value, err := h.Cache.Get(name); err == nil {
+	if value, err := h.Cache.GetInfo(name); err == nil {
 		return ctx.Status(fiber.StatusOK).JSON(response.CryptoResponse{
-			Name:  name,
-			Value: value,
+			Name:        name,
+			Value:       int(value.Value),
+			MarketValue: int(value.MarketValue),
+			ROC:         value.ROC,
+			UpdatedAt:   value.UpdatedAt,
 		})
 	}
 

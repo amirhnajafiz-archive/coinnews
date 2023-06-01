@@ -42,6 +42,15 @@ func (c *Cache) Get(name string) (int64, error) {
 	return 0, errNotFound
 }
 
+// GetInfo returns the whole item
+func (c *Cache) GetInfo(name string) (*model.Currency, error) {
+	if value, ok := c.crypto[name]; ok {
+		return value, nil
+	}
+
+	return nil, errNotFound
+}
+
 // GetAllNames returns the map keys.
 func (c *Cache) GetAllNames() []string {
 	keys := make([]string, 0)
