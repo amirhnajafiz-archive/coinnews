@@ -9,8 +9,10 @@ import (
 )
 
 type Worker struct {
-	Cache    *cache.Cache
-	Interval int
+	Cache             *cache.Cache
+	Interval          int
+	ChangeProbability int
+	ChangeFactor      int
 }
 
 func (w Worker) Do() {
@@ -30,11 +32,9 @@ func (w Worker) Do() {
 func (w Worker) process(name string) {
 	value, _ := w.Cache.Get(name)
 
-	delta := rand.Int() % 5
-	if delta == 0 || delta == 3 {
-		value -= 1
-	} else if delta == 1 || delta == 2 {
-		value += 1
+	delta := rand.Intn(w.ChangeFactor)
+	if delta < w.ChangeProbability {
+		value = value + int64(rand.Intn(w.ChangeFactor)-w.ChangeFactor/2)
 	}
 
 	w.Cache.Update(name, value)

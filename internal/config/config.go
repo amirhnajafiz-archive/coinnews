@@ -11,10 +11,12 @@ import (
 )
 
 type Config struct {
-	HTTPPort       int          `koanf:"http_port"`
-	WorkerEnable   bool         `koanf:"worker_enable"`
-	WorkerInterval int          `koanf:"worker_interval"`
-	Units          []model.Unit `koanf:"units"`
+	HTTPPort          int          `koanf:"http_port"`
+	WorkerEnable      bool         `koanf:"worker_enable"`
+	WorkerInterval    int          `koanf:"worker_interval"`
+	ChangeProbability int          `koanf:"change_probability"`
+	ChangeFactor      int          `koanf:"change_factor"`
+	Units             []model.Unit `koanf:"units"`
 }
 
 func Load(path string) Config {
