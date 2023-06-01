@@ -30,8 +30,10 @@ func main() {
 	// init worker
 	if cfg.WorkerEnable {
 		go worker.Worker{
-			Cache:    c,
-			Interval: cfg.WorkerInterval,
+			Cache:             c,
+			Interval:          cfg.WorkerInterval,
+			ChangeFactor:      cfg.ChangeFactor,
+			ChangeProbability: cfg.ChangeProbability,
 		}.Do()
 	}
 

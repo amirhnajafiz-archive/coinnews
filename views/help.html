@@ -3,23 +3,23 @@
     <head>
         <meta charset="UTF-8" />
         <title>
-            Cryptography
+            Coinnews
         </title>
     </head>
     <body>
         <div>
             <h1>
-                Cryptography Data API Documents
+                Coinnews API Documents
             </h1>
             <div>
-                You can get data from the two following endpoints.
+                You can get data from the three following endpoints.
                 <ul>
                     <li>
                         <h4>
                             /api/data
                         </h4>
                         <p>
-                            Returns a list of available categories.
+                            Returns a list of available currencies.
                         </p>
                         <pre>
 ["bitcoin", "examplecoin"]
@@ -30,10 +30,40 @@
                             /api/data/{name}
                         </h4>
                         <p>
-                            Returns price of a specific crypto.
+                            Returns price of a specific currency.
                         </p>
                         <pre>
-{ "name": "bitcoin", "value": "500" }
+{
+  "name": "bitcoin",
+  "value": 499,
+  "market_value": 499,
+  "roc": -0.2,
+  "updated_at": "2023-06-01T09:45:46.4501+03:30"
+}
+                        </pre>
+                    </li>
+                    <li>
+                        <h4>
+                            /api/data/{name}/history
+                        </h4>
+                        <p>
+                            Returns the changes of a specific currency.
+                        </p>
+                        <pre>
+[
+  {
+    "value": 500,
+    "date": "2023-06-01T09:56:25.220238+03:30"
+  },
+  {
+    "value": 501,
+    "date": "2023-06-01T09:56:25.220881+03:30"
+  },
+  {
+    "value": 499,
+    "date": "2023-06-01T09:56:27.223426+03:30"
+  }
+]
                         </pre>
                     </li>
                 </ul>
