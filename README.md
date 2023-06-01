@@ -1,9 +1,16 @@
 # Coinnews
 
+![](https://img.shields.io/github/v/release/amirhnajafiz/coinnews?include_prereleases)
+![](https://img.shields.io/badge/language-Go-9cf)
+![](https://img.shields.io/badge/go--version-1.20-9cc)
+
 Providing a data source for students of Cloud Computing course (Spring 2023).
-With this application you can generate fake data for current rate of digital currency.
+With this application you can generate fake data for current rate of digital currencies.
+All you have to is set the name and initial prices.
 
 ## Docker image
+
+Make sure to use the image based on your runtime os architecture.
 
 ### linux
 
@@ -79,4 +86,3 @@ url: [GET] /api/data/{name | example: bitcoin}/history
 ## Kubernetes
 
 View all kubernetes manifests [here](kubernetes). Use the ```deploy.sh``` script to deploy all files.
-
