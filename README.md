@@ -32,6 +32,32 @@ url: [GET] /api/data/{name | example: bitcoin}
 ```json
 {
   "name": "bitcoin",
-  "value": "500"
+  "value": 499,
+  "market_value": 499,
+  "roc": -0.2,
+  "updated_at": "2023-06-01T09:45:46.4501+03:30"
 }
+```
+
+### get a single currency history
+
+#### request
+
+```shell
+url: [GET] /api/data/{name | example: bitcoin}/history
+```
+
+#### response
+
+```json
+[
+  {
+    "value": 500,
+    "date": "2023-06-01T09:56:25.220238+03:30"
+  },
+  {
+    "value": 501,
+    "date": "2023-06-01T09:56:25.220881+03:30"
+  }
+]
 ```
