@@ -51,6 +51,7 @@ func main() {
 	app.Get("/", func(ctx *fiber.Ctx) error {
 		return ctx.Render("help", nil)
 	})
+	app.Get("/api/data/:name/history", h.GetHistory)
 	app.Get("/api/data/:name", h.GetData)
 	app.Get("/api/data", h.GetAvailable)
 

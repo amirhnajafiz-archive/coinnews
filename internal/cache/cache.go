@@ -70,7 +70,7 @@ func (c *Cache) Update(name string, value int64) {
 		Value: item.Value,
 		Date:  item.UpdatedAt,
 	})
-	item.ROC = float64((value-item.Value)/item.Value) * 100
+	item.ROC = float64(float64(value-item.Value)/float64(item.Value)) * 100
 	item.UpdatedAt = time.Now()
 	item.Value = value
 	item.MarketValue = item.Changes[int(math.Max(float64(len(item.Changes)-10), 0))].Value
