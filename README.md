@@ -3,6 +3,20 @@
 Providing a data source for students of Cloud Computing course (Spring 2023).
 With this application you can generate fake data for current rate of digital currency.
 
+## Docker image
+
+### linux
+
+```shell
+docker pull amirhossein21/coinnews.linux:v0.2
+```
+
+### macos
+
+```shell
+docker pull amirhossein21/coinnews.macos:v0.2
+```
+
 ## API Documents
 
 ### get available currencies
