@@ -2,11 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
+  name: coinnews
   labels:
     type: data-source
     app: coinnews
     kubernetes.app: data-source
-  name: coinnews
+  annotations:
+    imageregistry: "https://hub.docker.com/"
 
 spec:
   replicas: 1
@@ -35,6 +37,12 @@ spec:
             - name: config
               mountPath: /src/app/config.yml
               subPath: config.yml
+          livenessProbe:
+            httpGet:
+              port: 8000
+              path: /
+            initialDelaySeconds: 3
+            periodSeconds: 3
       volumes:
         - name: config
           configMap:

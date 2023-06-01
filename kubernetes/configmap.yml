@@ -2,11 +2,13 @@ apiVersion: v1
 kind: ConfigMap
 
 metadata:
+  name: coinnews-configs
   labels:
     app: coinnews
     kubernetes.config: yaml
     kubernetes.app: data-source
-  name: coinnews-configs
+  annotations:
+    config-type: yaml
 
 data:
   config.yml:  |+
