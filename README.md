@@ -75,3 +75,8 @@ url: [GET] /api/data/{name | example: bitcoin}/history
   }
 ]
 ```
+
+## Kubernetes
+
+View all kubernetes manifests [here](kubernetes). Use the ```deploy.sh``` script to deploy all files.
+
