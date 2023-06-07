@@ -17,6 +17,35 @@ docker pull amirhossein21/coinnews.linux:v0.2
 docker pull amirhossein21/coinnews.macos:v0.2
 ```
 
+## Local
+
+In order to set up the project on your local machine using ```Docker```, first create
+a ```config.yml``` with the following content.
+
+```yaml
+http_port: 8000
+worker_enable: true
+worker_interval: 5
+units:
+  - name: bitcoin
+    value: 500
+  - name: docoin
+    value: 230
+```
+
+After that use the following command to start the container:
+
+```shell
+docker run -d \
+  --name coinnews-container \
+  --mount type=bind,source="$(pwd)"/config.yml,target=/src/app/config.yml \
+  --network host \
+  -p 8000:8000 \
+  amirhossein21/coinnews.linux:v0.2
+```
+
+Now you can access the api using ```localhost:8000```.
+
 ## API Documents
 
 ### get available currencies
