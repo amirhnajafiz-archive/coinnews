@@ -9,7 +9,6 @@ metadata:
     app.ingress.kubernetes.io/rewrite-target: /
 
 spec:
-  ingressClassName: coinnews
   rules:
     - http:
         paths:
