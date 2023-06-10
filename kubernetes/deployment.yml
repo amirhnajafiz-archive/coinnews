@@ -35,7 +35,7 @@ spec:
               cpu: "500m"
           volumeMounts:
             - name: config
-              mountPath: /src/app/config.yml
+              mountPath: /go/src/app/config.yml
               subPath: config.yml
           livenessProbe:
             httpGet:
