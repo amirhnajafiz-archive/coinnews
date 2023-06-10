@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: Coinnews API - OpenAPI 3.0
+  description: |-
+    This is a document for using Coinnews api.
+  version: 1.0.11
+servers:
+  - url: https://localhost:8000/api
+tags:
+  - name: data
+    description: Everything about currency prices
+paths:
+  /data:
+    get:
+      tags:
+        - data
+      summary: Get all currencies
+      description: Get a list of all available currencies
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  example: 'bitcoin'
+  /data/{name}:
+    get:
+      tags:
+        - data
+      summary: Get single currency
+      description: Get information of a single currency
+      parameters:
+        - name: name
+          in: path
+          description: Currency name
+          schema:
+            type: string
+          required: True
+          example: 'bitcoin'
+      responses:
+        '404':
+          description: Currency not found
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: 'bitcoin'
+                  value:
+                    type: integer
+                    example: 499
+                  market-value:
+                    type: integer
+                    example: 499
+                  roc:
+                    type: integer
+                    example: -0.2
+                    format: float
+                  updated_at:
+                    type: string
+                    example: "2023-06-01T09:45:46.4501+03:30"
+                    format: Date
+  /data/{name}/history:
+    get:
+      tags:
+        - data
+      summary: Get single currency history
+      description: Get information of history for a single currency
+      parameters:
+        - name: name
+          in: path
+          description: Currency name
+          schema:
+            type: string
+          required: True
+          example: 'bitcoin'
+      responses:
+        '404':
+          description: Currency not found
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: integer
+                      example: 499
+                    date:
+                      type: string
+                      example: "2023-06-01T09:45:46.4501+03:30"
+                      format: Date
