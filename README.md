@@ -42,12 +42,23 @@ units:
 
 After that use the following command to start the container:
 
+### macos
+
 ```shell
 docker run -d \
   --name coinnews-container \
-  --mount type=bind,source="$(pwd)"/config.yml,target=/src/app/config.yml \
-  --network host \
+  --mount type=bind,source="$(pwd)"/config.yml,target=/go/src/app/config.yml \
   -p 8000:8000 \
+  amirhossein21/coinnews.macos:v0.2
+```
+
+### linux
+
+```shell
+docker run -d \
+  --name coinnews-container \
+  --mount type=bind,source="$(pwd)"/config.yml,target=/go/src/app/config.yml \
+  --network host \
   amirhossein21/coinnews.linux:v0.2
 ```
 
