@@ -6,7 +6,12 @@
 
 Providing a data source for students of Cloud Computing course (Spring 2023).
 With this application you can generate fake data for current rate of digital currencies.
-All you have to is set the name and initial prices.
+All you have to is set the name and initial prices, after that you can get your data
+just by making some http calls.
+
+Make sure to read the description carefully. ```Coinnews``` can be installed using ```docker```.
+First try to run in on your local machine, after that use the kubernetes manifests in order
+to set up the ```Coinnews``` on your kubernetes cluster.
 
 ## Docker image
 
@@ -62,7 +67,7 @@ docker run -d \
   amirhossein21/coinnews.linux:v0.2
 ```
 
-Now you can access the api using ```localhost:8000```.
+Now you can access the api on ```localhost:8000```.
 
 ## API Documents
 
@@ -125,4 +130,6 @@ url: [GET] /api/data/{name | example: bitcoin}/history
 
 ## Kubernetes
 
-View all kubernetes manifests [here](kubernetes). Use the ```deploy.sh``` script to deploy all files.
+View all kubernetes manifests [here](kubernetes). Use these manifests in order
+to set up ```coinnews``` cluster on Kubernetes. You don't need to use these manifests
+exactly, you can make the changes that you like. This is just a base template.
