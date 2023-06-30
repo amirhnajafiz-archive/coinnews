@@ -2,6 +2,7 @@ package worker
 
 import (
 	"log"
+	"math"
 	"math/rand"
 	"time"
 
@@ -35,6 +36,7 @@ func (w Worker) process(name string) {
 	delta := rand.Intn(w.ChangeFactor)
 	if delta < w.ChangeProbability {
 		value = value + int64(rand.Intn(w.ChangeFactor)-w.ChangeFactor/2)
+		value = math.Max(value, 0)
 	}
 
 	w.Cache.Update(name, value)
