@@ -23,7 +23,7 @@ Make sure to use the image based on your runtime os architecture.
 docker pull amirhossein21/coinnews.linux:v0.2
 ```
 
-### macos
+### macos & windows
 
 ```shell
 docker pull amirhossein21/coinnews.macos:v0.2
@@ -47,7 +47,7 @@ units:
 
 After that use the following command to start the container:
 
-### macos
+### macos & windows
 
 ```shell
 docker run -d \
